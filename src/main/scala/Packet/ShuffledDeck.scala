@@ -19,4 +19,4 @@ object ShuffledDeck:
     } yield Card(card, suit)
     ShuffledDeck(Random.shuffle(deck))
 
-  
+

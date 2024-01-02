@@ -1,4 +1,4 @@
-package Support
+package Deck
 
 import Packet.ShuffledDeck.shuffledDeck
 import Support.DeckGens.shuffledDecks
@@ -13,7 +13,6 @@ class ShuffledDeckSpec extends ScalaCheckSuite:
 
   test("test decks") {
     forAll(shuffledDecks) { deck =>
-      println(deck)
       assert(deck.cards.toSet.size == 52)
     }
   }
