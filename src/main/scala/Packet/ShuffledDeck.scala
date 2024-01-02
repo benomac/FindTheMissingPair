@@ -2,6 +2,7 @@ package Packet
 
 import Packet.CardValue.cardValues
 import Packet.Suit.suits
+import cats.implicits._
 
 import scala.util.Random
 

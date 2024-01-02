@@ -24,5 +24,4 @@ object ThePerformance:
   }
 
   def main(args: Array[String]): Unit = {
-    dealTheHands(shuffledDeck, Nil).elevenUniqueCards.foreach(println)
   }
