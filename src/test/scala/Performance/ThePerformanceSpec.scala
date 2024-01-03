@@ -11,7 +11,7 @@ class ThePerformanceSpec extends ScalaCheckSuite:
   test("all working hands should have eleven unique cards") {
     forAll(shuffledDecks) { deck =>
       val elevenUniqueCardsValues =
-        dealTheHands(deck)
+        dealTheWorkingHands(deck)
           .elevenUniqueCards
           .map(cards => cards.value)
           .toSet
@@ -22,16 +22,12 @@ class ThePerformanceSpec extends ScalaCheckSuite:
 
   test("the remaining pair shouldn't be in the unique eleven") {
     forAll(shuffledDecks) { deck =>
-      val dealtHands = dealTheHands(deck)
-      val elevenUniqueCardsValues =
-        dealtHands
-          .elevenUniqueCards
-          .map(cards => cards.value)
+      val workingHands = dealTheWorkingHands(deck)
+      val uniqueCardsValues = elevenUniqueCardsValues(workingHands)
+      val remainingPair = theRemainingPair(workingHands, cardValues)
 
-      val remainingPair = theRemainingPair(dealtHands, cardValues)
-
-      assert(!elevenUniqueCardsValues.contains(remainingPair.card1))
-      assert(!elevenUniqueCardsValues.contains(remainingPair.card2))
+      assert(!uniqueCardsValues.contains(remainingPair.card1))
+      assert(!uniqueCardsValues.contains(remainingPair.card2))
 
     }
   }
