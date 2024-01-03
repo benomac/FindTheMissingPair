@@ -8,7 +8,9 @@ import scala.util.Random
 
 object ShuffledDeck:
 
-  case class Card(value: CardValue, suit: Suit)
+  case class Card(value: CardValue, suit: Suit):
+    def asString = s"$value of $suit"
+    def asFoundCard = s"${value.toString.toUpperCase} of $suit"
 
   case class ShuffledDeck(cards: List[Card])
 

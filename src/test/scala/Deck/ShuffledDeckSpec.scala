@@ -11,7 +11,7 @@ class ShuffledDeckSpec extends ScalaCheckSuite:
     1.to(10000).foreach(_ => assert(shuffledDeck.cards.toSet.size == 52))
   }
 
-  test("test decks") {
+  test("test decks Gen") {
     forAll(shuffledDecks) { deck =>
       assert(deck.cards.toSet.size == 52)
     }

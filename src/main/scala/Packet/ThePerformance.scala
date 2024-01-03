@@ -1,5 +1,6 @@
 package Packet
 
+import Packet.CardValue.cardValues
 import Packet.ShuffledDeck.{Card, ShuffledDeck, shuffledDeck}
 
 import scala.annotation.tailrec
@@ -40,5 +41,24 @@ object ThePerformance:
     PairToLookFor(pairValuesToFind.head, pairValuesToFind.last)
   }
 
+  @tailrec
+  def isThePairTogetherInTheRemainder(checkedCards: List[String], pair: PairToLookFor, remainderOfDeck: List[Card], acc: Int = 0): (Int, List[String]) = {
+    remainderOfDeck match {
+      case _ if remainderOfDeck.size < 2 => (acc, checkedCards :+ remainderOfDeck.last.asString)
+      case ::(head, next) if List(head.value, next.head.value) == List(pair.card1, pair.card2)
+      => isThePairTogetherInTheRemainder(checkedCards ++ List(head.asFoundCard, next.head.asFoundCard), pair, next.drop(1), acc + 1)
+      case ::(head, next) if List(head.value, next.head.value) == List(pair.card2, pair.card1)
+      => isThePairTogetherInTheRemainder(checkedCards ++ List(next.head.asFoundCard, head.asFoundCard), pair, next.drop(1), acc + 1)
+      case ::(head, next) => isThePairTogetherInTheRemainder(checkedCards :+ head.asString, pair, next, acc)
+      case _ => (acc, checkedCards :+ remainderOfDeck.last.asString)
+    }
+  }
+
   def main(args: Array[String]): Unit = {
+    val workingDeck = shuffledDeck
+    val workingHands = dealTheWorkingHands(workingDeck)
+    val pairToFind = theRemainingPair(workingHands, cardValues)
+    val result = isThePairTogetherInTheRemainder(Nil, pairToFind, workingHands.remainderOfDeck)
+    println(pairToFind)
+    println(result)
   }
