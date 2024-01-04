@@ -3,7 +3,7 @@ package Deck
 import Packet.ShuffledDeck.shuffledDeck
 import Packet.ShuffledDeck.shuffledDeck
 import Support.DeckGens.shuffledDecks
-import cats.effect.{IO, IOApp, Sync}
+import cats.effect.IO
 import munit.ScalaCheckSuite
 import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
 import org.scalacheck.Gen

@@ -3,7 +3,7 @@ package app
 import Packet.CardValue.cardValues
 import Packet.ShuffledDeck.{Card, ShuffledDeck}
 import Packet.Suit.suits
-import Packet.ThePerformance.{dealTheWorkingHands, isThePairTogetherInTheRemainder, theRemainingPair}
+import Packet.Performance.{dealTheWorkingHands, isThePairTogetherInTheRemainder}
 import cats.Monad
 import cats.effect.{ExitCode, IO, IOApp}
 import cats.implicits.*
