@@ -2,11 +2,14 @@ package Packet
 
 import Packet.CardValue.cardValues
 import Packet.Suit.suits
-import cats.implicits._
+import cats.effect.IO
+import cats.implicits.*
+import traits.Deck
 
 import scala.util.Random
 
-object ShuffledDeck:
+
+object ShuffledDeck extends Deck[IO]:
 
   case class Card(value: CardValue, suit: Suit):
     def asString = s"$value of $suit"
@@ -14,11 +17,11 @@ object ShuffledDeck:
 
   case class ShuffledDeck(cards: List[Card])
 
-  def shuffledDeck: ShuffledDeck =
+  override def shuffledDeck: IO[ShuffledDeck] =
     val deck = for {
       card <- cardValues
       suit <- suits
     } yield Card(card, suit)
-    ShuffledDeck(Random.shuffle(deck))
+    IO(ShuffledDeck(Random.shuffle(deck)))
 
 

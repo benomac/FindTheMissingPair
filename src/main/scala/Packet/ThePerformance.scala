@@ -1,8 +1,6 @@
 package Packet
 
-import Packet.CardValue.cardValues
-import Packet.ShuffledDeck.{Card, ShuffledDeck, shuffledDeck}
-
+import Packet.ShuffledDeck.{Card, ShuffledDeck}
 import scala.annotation.tailrec
 
 object ThePerformance:
@@ -52,13 +50,4 @@ object ThePerformance:
       case ::(head, next) => isThePairTogetherInTheRemainder(checkedCards :+ head.asString, pair, next, acc)
       case _ => (acc, checkedCards :+ remainderOfDeck.last.asString)
     }
-  }
-
-  def main(args: Array[String]): Unit = {
-    val workingDeck = shuffledDeck
-    val workingHands = dealTheWorkingHands(workingDeck)
-    val pairToFind = theRemainingPair(workingHands, cardValues)
-    val result = isThePairTogetherInTheRemainder(Nil, pairToFind, workingHands.remainderOfDeck)
-    println(pairToFind)
-    println(result)
   }
