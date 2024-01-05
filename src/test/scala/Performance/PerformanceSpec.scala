@@ -34,7 +34,6 @@ class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
         _ <- IO(assert(!uniqueCardsValues.contains(remainingPair.card1)))
         _ <- IO(assert(!uniqueCardsValues.contains(remainingPair.card2)))
       yield ()
-
-
     }
   }
+  

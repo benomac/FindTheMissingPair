@@ -1,15 +1,12 @@
 package Deck
 
 import Packet.ShuffledDeck.shuffledDeck
-import Packet.ShuffledDeck.shuffledDeck
-import Support.DeckGens.shuffledDecks
+import Support.DeckGens.{cards, shuffledDecks}
 import cats.effect.IO
-import munit.ScalaCheckSuite
 import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
 import org.scalacheck.Gen
 import org.scalacheck.Prop.forAll
 import org.scalacheck.effect.PropF.forAllF
-import traits.Deck
 
 class ShuffledDeckSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
 

@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1847c52-0f97-417a-a89a-a3e01ce18da6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/scala/traits/Performance.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/Packet/ThePerformance.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Packet/Performance.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/scala/app/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/app/Main.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/Performance/ThePerformanceSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/Support/DeckGens.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Support/DeckGens.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +71,8 @@
     "MUnit.DeckSpec.it should always contain 52 cards.executor": "Run",
     "MUnit.DeckSpec.test decks.executor": "Run",
     "MUnit.PerformanceSpec.all working hands should have eleven unique cards.executor": "Run",
+    "MUnit.PerformanceSpec.executor": "Run",
+    "MUnit.PerformanceSpec.the remaining pair shouldn't be in the unique eleven.executor": "Run",
     "MUnit.ShuffledDeckSpec.executor": "Run",
     "MUnit.ShuffledDeckSpec.it should always contain 52 cards.executor": "Run",
     "MUnit.ShuffledDeckSpec.it should always contains 52 unique cards.executor": "Run",

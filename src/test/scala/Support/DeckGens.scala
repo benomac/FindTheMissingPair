@@ -10,6 +10,12 @@ import scala.util.Random
 object DeckGens:
     def suits: Gen[List[Suit]] = Gen.const(Suit.suits)
     def values: Gen[List[CardValue]] = Gen.const(CardValue.cardValues)
+    def cards: Gen[Card] =
+      for {
+        v <- values
+        s <- suits
+      } yield Card(v.head, s.head)
+      
     def shuffledDecks: Gen[ShuffledDeck] = {
       for {
         v <- values
