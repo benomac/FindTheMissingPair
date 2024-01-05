@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c1847c52-0f97-417a-a89a-a3e01ce18da6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Packet/ShuffledDeck.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Packet/ShuffledDeck.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/scala/Support/DeckGens.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Support/DeckGens.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +75,7 @@
     "MUnit.ShuffledDeckSpec.executor": "Run",
     "MUnit.ShuffledDeckSpec.it should always contain 52 cards.executor": "Run",
     "MUnit.ShuffledDeckSpec.it should always contains 52 unique cards.executor": "Run",
+    "MUnit.ShuffledDeckSpec.test decks Gen.executor": "Run",
     "MUnit.ThePerformanceSpec.all working hands should have eleven unique cards.executor": "Run",
     "MUnit.ThePerformanceSpec.executor": "Run",
     "MUnit.ThePerformanceSpec.the remaining pair shouldn't be in the unique eleven (1).executor": "Run",
@@ -93,7 +93,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="MUnit.PerformanceSpec">
+  <component name="RunManager" selected="MUnit.ShuffledDeckSpec.it should always contains 52 unique cards">
     <configuration name="PerformanceSpec" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="FindTheMissingPairCardTrick" />
       <option name="VMParameters" value="" />
@@ -115,33 +115,6 @@
       <option name="testKind" value="Class" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <option name="testClassPath" value="Performance.PerformanceSpec" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PerformanceSpec.all working hands should have eleven unique cards" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <module name="FindTheMissingPairCardTrick" />
-      <option name="VMParameters" value="" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="alternativeJrePath" />
-      <option name="alternativeJrePathEnabled" value="false" />
-      <option name="classpathModifications">
-        <list />
-      </option>
-      <option name="envs">
-        <map />
-      </option>
-      <option name="passParentEnvs" value="true" />
-      <option name="programParameters" value="" />
-      <option name="projectPathOnTarget" />
-      <option name="selectedOptions">
-        <list />
-      </option>
-      <option name="testKind" value="Test name" />
-      <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="Performance.PerformanceSpec" />
-      <option name="testName" value="all working hands should have eleven unique cards" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -174,6 +147,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShuffledDeckSpec" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="FindTheMissingPairCardTrick" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="Deck.ShuffledDeckSpec" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ShuffledDeckSpec.it should always contains 52 unique cards" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="FindTheMissingPairCardTrick" />
       <option name="VMParameters" value="" />
@@ -201,7 +200,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThePerformanceSpec" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="ShuffledDeckSpec.test decks Gen" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="FindTheMissingPairCardTrick" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -219,9 +218,10 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="testKind" value="Class" />
+      <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
-      <option name="testClassPath" value="Performance.ThePerformanceSpec" />
+      <option name="testClassPath" value="Deck.ShuffledDeckSpec" />
+      <option name="testName" value="test decks Gen" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -229,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="MUnit.ShuffledDeckSpec.it should always contains 52 unique cards" />
+        <item itemvalue="MUnit.ShuffledDeckSpec.test decks Gen" />
+        <item itemvalue="MUnit.ShuffledDeckSpec" />
         <item itemvalue="MUnit.PerformanceSpec" />
         <item itemvalue="MUnit.PerformanceSpec.the remaining pair shouldn't be in the unique eleven" />
-        <item itemvalue="MUnit.PerformanceSpec.all working hands should have eleven unique cards" />
-        <item itemvalue="MUnit.ThePerformanceSpec" />
-        <item itemvalue="MUnit.ShuffledDeckSpec.it should always contains 52 unique cards" />
       </list>
     </recent_temporary>
   </component>

@@ -24,4 +24,9 @@ object ShuffledDeck extends Deck[IO]:
     } yield Card(card, suit)
     IO(ShuffledDeck(Random.shuffle(deck)))
 
-
+  def shuffledDeckOption: Option[ShuffledDeck] =
+    val deck = for {
+      card <- cardValues
+      suit <- suits
+    } yield Card(card, suit)
+    Option(ShuffledDeck(Random.shuffle(deck)))
