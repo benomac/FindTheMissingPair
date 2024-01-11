@@ -14,7 +14,7 @@ class ShuffledDeckSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
     forAllF(Gen.const(())) { _ =>
       for
         sd <- shuffledDeck
-        _ <- IO(assert(sd.cards.toSet.size == 52))
+        _ <- IO(assert(sd.cards.toSet.size == 52)) //assertIO??
       yield ()
     }
   }

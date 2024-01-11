@@ -19,7 +19,7 @@ class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
             .elevenUniqueCards
             .map(cards => cards.value)
             .toSet
-        _ <- IO(assert(elevenUniqueCardsValues.size == 11))
+        _ <- IO(assert(elevenUniqueCardsValues.size == 11)) //how do you use assertIO??
       yield ()
     }
   }
