@@ -1,38 +1,35 @@
 package app
 
+import Packet.CardValue
 import Packet.CardValue.cardValues
-import Packet.ShuffledDeck.{Card, ShuffledDeck}
+import Packet.ShuffledDeck.{Card, ShuffledDeck, shuffledDeck}
 import Packet.Suit.suits
-import Packet.Performance.{dealTheWorkingHands, isThePairTogetherInTheRemainder}
+import Packet.Performance.*
 import cats.Monad
 import cats.effect.{ExitCode, IO, IOApp}
 import cats.implicits.*
 
 import scala.util.Random
-object Main extends IOApp {
+
+object Main extends IOApp:
   trait Console[F[_]]:
     def putStrLn(str: String): F[Unit]
+
     def readLn: F[String]
-    def shuffledDeck: F[ShuffledDeck]
 
-  implicit object ConsoleIO extends Console[IO] {
-    override def putStrLn(str: String): IO[Unit] = IO(println(str))
-    override def readLn: IO[String] = IO(scala.io.StdIn.readLine)
 
-    override def shuffledDeck: IO[ShuffledDeck] =
-      val deck = for {
-        card <- cardValues
-        suit <- suits
-      } yield Card(card, suit)
-      IO(ShuffledDeck(Random.shuffle(deck)))
-  }
-  def program2[F[_] : Monad](implicit C: Console[F]): F[Unit] =
-    for {
-      shuffledDeck <- C.shuffledDeck
-      _ <- C.putStrLn(s"$shuffledDeck")
-    } yield ()
+  val res: IO[(Int, List[String])] =
+    for
+      deck <- shuffledDeck
+      workingHands = dealTheWorkingHands(deck)
+      remainingPair = theRemainingPair(workingHands, CardValue.cardValues)
+      _ = println(remainingPair)
+      result = resultOfTrick(Nil, remainingPair, workingHands.remainderOfDeck)
+      formatted = formatDeck(result.deck)
+    yield (result.successes, formatted)
+
 
   override def run(args: List[String]): IO[ExitCode] =
-    program2[IO].as(ExitCode.Success)
+    res.flatMap(r => IO(println(s"result: $r"))).as(ExitCode.Success)
 
-}
+

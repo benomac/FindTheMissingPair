@@ -11,29 +11,27 @@ import org.scalacheck.effect.PropF.forAllF
 class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
 
   test("all working hands should have eleven unique cards") {
-    forAllF(shuffledDecks) { deck =>
-      for
-        workingHands <- dealTheWorkingHands(deck)
-        elevenUniqueCardsValues =
-          workingHands
-            .elevenUniqueCards
-            .map(cards => cards.value)
-            .toSet
-        _ <- IO(assert(elevenUniqueCardsValues.size == 11)) //how do you use assertIO??
-      yield ()
+    forAll(shuffledDecks) { deck =>
+      val workingHands = dealTheWorkingHands(deck)
+      val elevenUniqueCardsValues =
+        workingHands
+          .elevenUniqueCards
+          .map(cards => cards.value)
+          .toSet
+      assert(elevenUniqueCardsValues.size == 11)
     }
   }
 
   test("the remaining pair shouldn't be in the unique eleven") {
-    forAllF(shuffledDecks) { deck =>
-      for
-        workingHands      <- dealTheWorkingHands(deck)
-        uniqueCardsValues <- elevenUniqueCardsValues(workingHands)
-        remainingPair     <- theRemainingPair(workingHands, cardValues)
+    forAll(shuffledDecks) { deck =>
 
-        _ <- IO(assert(!uniqueCardsValues.contains(remainingPair.card1)))
-        _ <- IO(assert(!uniqueCardsValues.contains(remainingPair.card2)))
-      yield ()
+      val workingHands      = dealTheWorkingHands(deck)
+      val uniqueCardsValues = elevenUniqueCardsValues(workingHands)
+      val remainingPair     = theRemainingPair(workingHands, cardValues)
+
+      assert(!uniqueCardsValues.contains(remainingPair.card1))
+      assert(!uniqueCardsValues.contains(remainingPair.card2))
+
     }
   }
   
