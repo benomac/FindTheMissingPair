@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/scala/Packet/Performance.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Packet/Performance.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/Packet/ShuffledDeck.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Packet/ShuffledDeck.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/scala/app/Main.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/app/Main.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/traits/Deck.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/traits/Deck.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/untitled.sc" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/untitled.sc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Deck/ShuffledDeckSpec.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/scala/Performance/PerformanceSpec.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +78,9 @@
     "MUnit.DeckSpec.test decks.executor": "Run",
     "MUnit.PerformanceSpec.all working hands should have eleven unique cards.executor": "Run",
     "MUnit.PerformanceSpec.executor": "Run",
+    "MUnit.PerformanceSpec.result of trick should identify pair of remaining pair.executor": "Run",
+    "MUnit.PerformanceSpec.result of trick should identify remaining pair, in remainder of deck.executor": "Run",
+    "MUnit.PerformanceSpec.result of trick should identify remaining pair, in remainder of decks.executor": "Run",
     "MUnit.PerformanceSpec.the remaining pair shouldn't be in the unique eleven.executor": "Run",
     "MUnit.ShuffledDeckSpec.executor": "Run",
     "MUnit.ShuffledDeckSpec.it should always contain 52 cards.executor": "Run",
@@ -96,26 +102,13 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="MUnit.PerformanceSpec">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="app.Main" />
       <module name="FindTheMissingPairCardTrick" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Performance" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Packet.Performance" />
-      <module name="FindTheMissingPairCardTrick" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Packet.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,7 +142,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PerformanceSpec.all working hands should have eleven unique cards" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="PerformanceSpec.result of trick should identify remaining pair, in remainder of deck" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="FindTheMissingPairCardTrick" />
       <option name="VMParameters" value="" />
       <option name="allowRunningInParallel" value="false" />
@@ -170,7 +163,7 @@
       <option name="testKind" value="Test name" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <option name="testClassPath" value="Performance.PerformanceSpec" />
-      <option name="testName" value="all working hands should have eleven unique cards" />
+      <option name="testName" value="result of trick should identify remaining pair, in remainder of deck" />
       <option name="workingDirectory" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -203,13 +196,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShuffledDeckSpec" type="MUnitRunConfiguration" factoryName="MUnit" temporary="true" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="FindTheMissingPairCardTrick" />
+      <option name="VMParameters" value="" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="alternativeJrePath" />
+      <option name="alternativeJrePathEnabled" value="false" />
+      <option name="classpathModifications">
+        <list />
+      </option>
+      <option name="envs">
+        <map />
+      </option>
+      <option name="passParentEnvs" value="true" />
+      <option name="programParameters" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="testKind" value="Class" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <option name="testClassPath" value="Deck.ShuffledDeckSpec" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="MUnit.PerformanceSpec.all working hands should have eleven unique cards" />
-        <item itemvalue="MUnit.PerformanceSpec.the remaining pair shouldn't be in the unique eleven" />
         <item itemvalue="MUnit.PerformanceSpec" />
-        <item itemvalue="Application.Performance" />
+        <item itemvalue="MUnit.ShuffledDeckSpec" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="MUnit.PerformanceSpec.result of trick should identify remaining pair, in remainder of deck" />
+        <item itemvalue="MUnit.PerformanceSpec.the remaining pair shouldn't be in the unique eleven" />
       </list>
     </recent_temporary>
   </component>

@@ -1,6 +1,6 @@
 package Deck
 
-import Packet.ShuffledDeck.shuffledDeck
+import Packet.ShuffledDeck.shuffleDeck
 import Support.DeckGens.{cards, shuffledDecks}
 import cats.effect.IO
 import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
@@ -12,10 +12,7 @@ class ShuffledDeckSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
 
   test("it should always contains 52 unique cards") {
     forAllF(Gen.const(())) { _ =>
-      for
-        sd <- shuffledDeck
-        _ <- IO(assert(sd.cards.toSet.size == 52)) //assertIO??
-      yield ()
+      assertIO(shuffleDeck.map(_.cards.toSet.size), 52)
     }
   }
 
