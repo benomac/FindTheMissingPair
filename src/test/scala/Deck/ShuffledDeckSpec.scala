@@ -1,7 +1,7 @@
 package Deck
 
 import Packet.ShuffledDeck.shuffleDeck
-import Support.DeckGens.{cards, shuffledDecks}
+import Support.DeckGens.shuffledDecks
 import cats.effect.IO
 import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
 import org.scalacheck.Gen

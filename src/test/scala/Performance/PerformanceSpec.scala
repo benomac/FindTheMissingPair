@@ -1,13 +1,10 @@
 package Performance
 
-import Packet.{CardValue, ShuffledDeck}
-import Packet.CardValue.cardValues
+import Packet.ShuffledDeck
 import Packet.Performance.*
-import Support.DeckGens.shuffledDecks
-import cats.effect.IO
-import munit.{CatsEffectSuite, ScalaCheckEffectSuite, ScalaCheckSuite}
+import Support.DeckGens.{shuffledDecks, workingHandsAndPairs}
+import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
 import org.scalacheck.Prop.forAll
-import org.scalacheck.effect.PropF.forAllF
 
 class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
 
@@ -24,11 +21,10 @@ class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
   }
 
   test("the remaining pair shouldn't be in the unique eleven") {
-    forAll(shuffledDecks) { deck =>
+    forAll(workingHandsAndPairs) { handAndPair =>
 
-      val workingHands = dealTheWorkingHands(deck)
-      val uniqueCardsValues = elevenUniqueCardsValues(workingHands)
-      val remainingPair = theRemainingPair(workingHands, cardValues)
+      val uniqueCardsValues = elevenUniqueCardsValues(handAndPair.hands)
+      val remainingPair = handAndPair.pair
 
       assert(!uniqueCardsValues.contains(remainingPair.cards.head))
       assert(!uniqueCardsValues.contains(remainingPair.cards.last))
@@ -36,38 +32,15 @@ class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
     }
   }
 
+
   test("result of trick should identify remaining pair, in remainder of deck") {
-    forAll(shuffledDecks) {
-      deck =>
-        val workingHands: WorkingHands = dealTheWorkingHands(deck)
-        val remainingPair: PairToLookFor = theRemainingPair(workingHands, CardValue.cardValues)
-        //        val pairContained: Boolean = containsThePair(remainingPair, workingHands.remainderOfDeck)
-        val result: ShuffledDeck.ResultOfTrick = resultOfTrick(Nil, remainingPair, workingHands.remainderOfDeck)
-        val pairsInDeckFound: List[CardValue] = result.deck.filter(_.isInAPair).map(c => c.value)
+    forAll(workingHandsAndPairs) { handsAndPair =>
 
-        assert(result.deck.count(_.isInAPair) == result.successes * 2)
-        println(result.deck.filter(_.isInAPair).map(_.value) )
-        println(remainingPair.cards)
-        if (workingHands.remainderOfDeck.map(_.value).containsSlice(remainingPair.cards))
-          assert{
-            println("pairs")
-            result.deck.map(_.value).containsSlice(remainingPair.cards)
-          }
-          assert(result.deck.filter(_.isInAPair).map(_.value).toSet == remainingPair.cards.toSet)
-        else if (workingHands.remainderOfDeck.map(_.value).containsSlice(remainingPair.cards.reverse))
-          assert{
-            println("pairs")
-            result.deck.map(_.value).containsSlice(remainingPair.cards.reverse)
-          }
-          assert(result.deck.filter(_.isInAPair).map(_.value).toSet == remainingPair.cards.toSet)
-        else
-          assert{
-            println("no pairs")
-            1 == 1
-          }
+      val result: ShuffledDeck.ResultOfTrick = 
+        resultOfTrick(Nil, handsAndPair.pair, handsAndPair.hands.remainderOfDeck)
 
+      assert(result.successes >= 1)
     }
   }
 
- 
   

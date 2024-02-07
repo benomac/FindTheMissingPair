@@ -31,13 +31,13 @@ object Performance:
       .elevenUniqueCards
       .flatMap(c => List(c.value))
 
-  private def pairValues(cardValues: List[CardValue], elevenValues: List[CardValue], pair: List[CardValue]): List[CardValue] =
+  private def pairValues(cardValues: List[CardValue], elevenValues: List[CardValue], pair: List[CardValue] = Nil): List[CardValue] =
     cardValues
       .flatMap(cv => if (elevenValues.contains(cv)) Nil else pair :+ cv)
 
   def theRemainingPair(workingHands: WorkingHands, allCardValues: List[CardValue]): PairToLookFor = {
     val elevenValues = elevenUniqueCardsValues(workingHands)
-    val pairValuesToFind = pairValues(allCardValues, elevenValues, Nil)
+    val pairValuesToFind = pairValues(allCardValues, elevenValues)
     PairToLookFor(pairValuesToFind)
   }
 
@@ -53,7 +53,7 @@ object Performance:
           next.drop(1), acc + 1)
         case ::(head, next) => resultOfTrick(checkedCards :+ head, pair, next, acc)
         case _ => ResultOfTrick(acc, checkedCards ++ remainderOfDeck)
-  
+
   def containsThePair(pair: PairToLookFor, remainderOfDeck: List[Card], acc: Int = 0): Boolean = {
     remainderOfDeck.map(_.value).containsSlice(pair.cards) ||
       remainderOfDeck.map(_.value).containsSlice(pair.cards.reverse)

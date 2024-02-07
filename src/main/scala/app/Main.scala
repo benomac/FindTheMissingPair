@@ -3,15 +3,11 @@ package app
 import Packet.CardValue
 import Packet.CardValue.cardValues
 import Packet.ShuffledDeck.{Card, renderDeck, shuffleDeck}
-import Packet.Suit.suits
 import Packet.Performance.*
-import cats.Monad
 import cats.effect.{ExitCode, IO, IOApp}
-import cats.implicits.*
 import Packet.Suit._
 import Packet.CardValue._
 
-import scala.util.Random
 
 object Main extends IOApp:
   trait Console[F[_]]:
