@@ -48,6 +48,15 @@ object DeckGens:
       1000
     )
 
+  def nonWorkingHandsAndPairs: Gen[HandsAndPairs] =
+    handsAndPairs.retryUntil(handPair => !(
+      handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
+        || handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse))
+      && !(handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
+      && handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse)),
+      1000
+    )
+
 
 
 

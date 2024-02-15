@@ -2,7 +2,7 @@ package Performance
 
 import Packet.ShuffledDeck
 import Packet.Performance.*
-import Support.DeckGens.{shuffledDecks, workingHandsAndPairs}
+import Support.DeckGens.{shuffledDecks, workingHandsAndPairs, nonWorkingHandsAndPairs}
 import munit.{CatsEffectSuite, ScalaCheckEffectSuite}
 import org.scalacheck.Prop.forAll
 
@@ -33,13 +33,23 @@ class PerformanceSpec extends CatsEffectSuite with ScalaCheckEffectSuite:
   }
 
 
-  test("result of trick should identify remaining pair, in remainder of deck") {
+  test("result of trick should identify when the remaining pair is in the remainder of deck") {
     forAll(workingHandsAndPairs) { handsAndPair =>
 
       val result: ShuffledDeck.ResultOfTrick = 
         resultOfTrick(Nil, handsAndPair.pair, handsAndPair.hands.remainderOfDeck)
 
       assert(result.successes >= 1)
+    }
+  }
+
+  test("result of trick should identify when the remaining pair is not in the remainder of deck") {
+    forAll(nonWorkingHandsAndPairs) { handsAndPair =>
+
+      val result: ShuffledDeck.ResultOfTrick =
+        resultOfTrick(Nil, handsAndPair.pair, handsAndPair.hands.remainderOfDeck)
+      
+      assert(result.successes == 0)
     }
   }
 
