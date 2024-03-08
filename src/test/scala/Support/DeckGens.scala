@@ -39,21 +39,33 @@ object DeckGens:
       pair <- remainingPairs(hand)
     yield HandsAndPairs(hand, pair)
 
+  def handContainsPair(handAndPair: HandsAndPairs): Boolean =
+    handAndPair
+      .hands
+      .remainderOfDeck
+      .map(_.value)
+      .containsSlice(handAndPair.pair.cards)
+
+  def handContainsPairReversed(handAndPair: HandsAndPairs): Boolean =
+    handAndPair
+      .hands
+      .remainderOfDeck
+      .map(_.value)
+      .containsSlice(handAndPair.pair.cards.reverse)
+
+  // add extension methods for below gens
   def workingHandsAndPairs: Gen[HandsAndPairs] =
-    handsAndPairs.retryUntil(handPair => (
-      handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
-        || handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse))
-      && (handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
-      && handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse)),
+    handsAndPairs.retryUntil(handAndPair =>
+      (handContainsPair(handAndPair) || handContainsPairReversed(handAndPair))
+      && (handContainsPair(handAndPair) && handContainsPairReversed(handAndPair)),
       1000
     )
 
+  //  (((1, 2) || (2 ,1)) && ((1, 2) && (2, 1)))
   def nonWorkingHandsAndPairs: Gen[HandsAndPairs] =
-    handsAndPairs.retryUntil(handPair => !(
-      handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
-        || handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse))
-      && !(handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards)
-      && handPair.hands.remainderOfDeck.map(_.value).containsSlice(handPair.pair.cards.reverse)),
+    handsAndPairs.retryUntil(handAndPair =>
+      !(handContainsPair(handAndPair) || handContainsPairReversed(handAndPair))
+        && !(handContainsPair(handAndPair) && handContainsPairReversed(handAndPair)),
       1000
     )
 

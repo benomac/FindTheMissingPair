@@ -48,16 +48,11 @@ object Performance:
       remainderOfDeck match
         case ::(head, next) if List(head.value, next.head.value) == pair.cards ||
           List(head.value, next.head.value) == pair.cards.reverse
-        => resultOfTrick(checkedCards ++ List(head.copy(isInAPair = true),
-          next.head.copy(isInAPair = true)), pair,
+        => resultOfTrick(checkedCards ++ List(head, next.head).map(_.copy(isInAPair = true)), pair,
           next.drop(1), acc + 1)
         case ::(head, next) => resultOfTrick(checkedCards :+ head, pair, next, acc)
         case _ => ResultOfTrick(acc, checkedCards ++ remainderOfDeck)
 
-  def containsThePair(pair: PairToLookFor, remainderOfDeck: List[Card], acc: Int = 0): Boolean = {
-    remainderOfDeck.map(_.value).containsSlice(pair.cards) ||
-      remainderOfDeck.map(_.value).containsSlice(pair.cards.reverse)
-  }
   
 
 

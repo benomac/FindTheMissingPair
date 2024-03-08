@@ -17,6 +17,7 @@ object Main extends IOApp:
 
   val remainderOfDeck = List(Card(Ten, Spades), Card(Queen, Spades), Card(Jack, Spades), Card(Jack, Clubs), Card(Jack, Diamonds), Card(Ace, Diamonds), Card(Three, Clubs), Card(Ten, Diamonds), Card(Three, Hearts), Card(Five, Hearts), Card(Eight, Spades), Card(Nine, Spades), Card(Six, Diamonds), Card(Eight, Diamonds), Card(Two, Spades), Card(Nine, Diamonds), Card(Six, Hearts), Card(Six, Clubs), Card(Seven, Spades), Card(Five, Spades), Card(Ten, Clubs), Card(Ace, Hearts), Card(Seven, Clubs), Card(King, Spades), Card(Queen, Clubs), Card(Seven, Hearts), Card(Two, Diamonds), Card(Five, Diamonds), Card(Ace, Clubs), Card(Four, Hearts), Card(Three, Diamonds), Card(King, Clubs), Card(Queen, Diamonds), Card(Two, Hearts), Card(King, Diamonds), Card(Nine, Clubs), Card(Two, Clubs), Card(Ten, Hearts), Card(Four, Clubs))
   val pair = PairToLookFor(List(Two, Ten))
+
   val res: IO[(Int, List[String])] =
     for
       deck <- shuffleDeck
